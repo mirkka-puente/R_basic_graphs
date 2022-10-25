@@ -37,3 +37,25 @@ title(main = "Poisson distributions with lambda = 1-10")
 dev.off()
 
 #3. Import data from this article: https://peerj.com/articles/328/
+
+#Importing data
+Webcsv <- "https://dfzljdn9uc3pi.cloudfront.net/2014/328/1/Appendix1.csv"
+Data <- read.table(Webcsv, header = T, sep = ",", skip = 2)
+str(Data)                    
+
+#With these data, using for(), plot graphs to represent the effect 
+#of all the numerical variables, from “richness” to “mean_quality” 
+#on “yield”. Choose the type of graph that you think better 
+#represents this effect for the different species. Create only 
+#one pdf with all the graphs inside.
+pdf("MP_pdf.pdf", height = 20, width = 10)
+x <- Data$mean_yield 
+y <- Data[6:12]
+name = colnames(y)
+
+#empty graph
+for (i in 1:7) {
+  plot(x, y[[i]], xlab = "Mean yield", ylab = name[i])
+}
+dev.off()
+
