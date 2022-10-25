@@ -48,14 +48,14 @@ str(Data)
 #on “yield”. Choose the type of graph that you think better 
 #represents this effect for the different species. Create only 
 #one pdf with all the graphs inside.
-pdf("MP_pdf.pdf", height = 20, width = 10)
+#pdf("MP_pdf.pdf", height = 11, width = 8.5)
 x <- Data$mean_yield 
 y <- Data[6:12]
-name = colnames(y)
+name <- colnames(y)
 
 #empty graph
 for (i in 1:7) {
   plot(x, y[[i]], xlab = "Mean yield", ylab = name[i])
 }
-dev.off()
+#dev.off()
 
