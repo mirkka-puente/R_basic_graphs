@@ -1,5 +1,5 @@
 ## Mirkka Puente
-## October 25th, 2022
+## October 26th, 2022
 ############################ EXERCISES #############################
 #1. Plot a cheat-sheet with values of color and point type (col =,and 
 #pch = ) from 1 to 25, and export it as a jpeg of 15 cm wide, 6 cm
@@ -61,7 +61,7 @@ Data <- read.table(Webcsv, header = T, sep = ",", skip = 2)
 #one pdf with all the graphs inside.
 
 #Open PDF
-pdf("Mirkka.pdf", height = 11, width = 8.5)
+pdf("Scatterplots_MP.pdf", height = 11, width = 8.5)
 
 #Independent variable
 x <- Data$mean_yield 
@@ -90,8 +90,12 @@ for (i in 1:4) {
   #Second loop: goes over the 7 variables
   #Plot: variable of interest against yield
   for (j in 1:7) {
-    plot(x[all_crops[i]], y[[j]][all_crops[i]], col = i, 
-         xlab = "Mean yield ",ylab = variable_name[j])
+    #linear model to get the line
+    crop.lm <- lm(x[all_crops[i]] ~ y[[j]][all_crops[i]])
+    plot(x[all_crops[i]], y[[j]][all_crops[i]],
+         col = i,xlab = "Mean yield ", ylab = variable_name[j])
+    #Line
+    abline(crop.lm, col = "pink")
     title(paste0(name_crops[i]," ",variable_name[j], " scatterplot"))
   }
 }
