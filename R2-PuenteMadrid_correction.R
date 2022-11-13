@@ -3,6 +3,7 @@
 
 #Install packages (to be run first and one time only)
 #install.packages("writexl")
+#Running library
 library(writexl)
 
 #################### EXERCISES ###################
@@ -125,6 +126,5 @@ rm(means, standard_errors, medians, mins, maxs, a, b, c, i , s,
 p <- 'Mirkka.xlsx'
 
 #Actually create the excel file
-#Running library
 write_xlsx(dt,p)
 rm(p)
